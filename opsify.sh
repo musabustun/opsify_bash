@@ -204,7 +204,7 @@ sudo docker run -d \
   -e N8N_HOST=0.0.0.0 \
   -e N8N_PORT=5678 \
   -e N8N_PROTOCOL=http \
-  -e WEBHOOK_URL=$N8N_DOMAIN:5678 \
+  -e WEBHOOK_URL=$N8N_DOMAIN \
   -e DB_TYPE=postgresdb \
   -e DB_POSTGRESDB_HOST=localhost \
   -e DB_POSTGRESDB_PORT=5432 \
