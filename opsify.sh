@@ -210,4 +210,4 @@ sudo docker run -d \
 check_command "n8n Docker container başlatma"
 
 echo ""
-echo "✅ Her şey başarıyla kuruldu! Hadi yürü be Musab reis, sistemi çökmüş sunucuları ayağa kaldırıyosun amk 🧠🔥"
+echo "✅ Her şey başarıyla kuruldu! 🔥"
