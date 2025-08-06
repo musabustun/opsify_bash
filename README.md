@@ -38,6 +38,8 @@ Script içerisinde veritabanı kullanıcı adı ve şifresi gibi hassas bilgiler
 ## Katkı
 Katkıda bulunmak için pull request gönderebilir veya issue açabilirsiniz.
 
+@aldinokemal2104/n8n-nodes-gowa
+
 ---
 
 **Yazar:** Musab
