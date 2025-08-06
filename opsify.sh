@@ -1,5 +1,11 @@
 #!/bin/bash
 
+# n8n için domain al
+read -p "n8n için domain veya IP adresi girin (örn: musabustun.com veya https://musabustun.com): " N8N_DOMAIN
+if [[ ! "$N8N_DOMAIN" =~ ^https?:// ]]; then
+    N8N_DOMAIN="https://$N8N_DOMAIN"
+fi
+
 # Hata durumunda script'i durdur
 set -e
 
@@ -198,7 +204,7 @@ sudo docker run -d \
   -e N8N_HOST=0.0.0.0 \
   -e N8N_PORT=5678 \
   -e N8N_PROTOCOL=http \
-  -e WEBHOOK_URL=http://localhost:5678 \
+  -e WEBHOOK_URL=$N8N_DOMAIN:5678 \
   -e DB_TYPE=postgresdb \
   -e DB_POSTGRESDB_HOST=localhost \
   -e DB_POSTGRESDB_PORT=5432 \
