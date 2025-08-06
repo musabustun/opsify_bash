@@ -190,7 +190,7 @@ if docker ps -a | grep -q n8n-container; then
     docker rm n8n-container || true
 fi
 
-docker run -d \
+sudo docker run -d \
   --name n8n-container \
   --network host \
   --restart unless-stopped \
