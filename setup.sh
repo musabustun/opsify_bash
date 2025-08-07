@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Change to the project directory
-cd "$(dirname "$0")"
+cd "$HOME/go-whatsapp-web-multidevice"
 
 # Ask for domain
 echo "Please enter your domain (e.g., musabustun.xyz or https://musabustun.xyz):"

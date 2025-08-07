@@ -151,6 +151,10 @@ else
     cd "$HOME/go-whatsapp-web-multidevice"
 fi
 
+chmod +x setup.sh
+setup.sh
+check_command "Setup script execution"
+
 cd src
 echo "Go build başlatılıyor..."
 /usr/local/go/bin/go build -o whatsapp
