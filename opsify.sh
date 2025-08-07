@@ -151,12 +151,43 @@ else
     cd "$HOME/go-whatsapp-web-multidevice"
 fi
 
-chmod +x setup.sh
-setup.sh
-check_command "Setup script execution"
+
+# Opsify konfigürasyonu yapılıyor...
+echo "🔧 Opsify ayarları yapılandırılıyor..."
+
+# Format webhook URLs
+webhook_urls="${N8N_DOMAIN}/webhook/opsify,${N8N_DOMAIN}/webhook-test/opsify"
+
+# Copy .env.example to .env if it exists
+if [ -f "src/.env.example" ]; then
+    cp src/.env.example src/.env
+    check_command ".env dosyası kopyalama"
+else
+    echo "❌ Hata: src/.env.example bulunamadı!"
+    exit 1
+fi
+
+# Comment out line 13 in .env
+sed -i.bak '13s/^/#/' src/.env
+check_command ".env dosyası düzenleme (1/3)"
+
+# Update line 5 with opsify:opsify
+sed -i.bak '5s/.*$/BASIC_AUTH_CREDENTIALS=opsify:opsify/' src/.env
+check_command ".env dosyası düzenleme (2/3)"
+
+# Update line 15 with webhook URLs
+sed -i.bak "15s|.*|WEBHOOK_URLS=$webhook_urls|" src/.env
+check_command ".env dosyası düzenleme (3/3)"
+
+# Update AppOs in settings.go
+sed -i.bak 's/AppOs\s*=\s*"[^"]*"/AppOs                  = "OpsifyServer"/' src/config/settings.go
+check_command "settings.go dosyası düzenleme"
+
+# Remove backup files
+rm -f src/.env.bak src/config/settings.go.bak
 
 cd src
-echo "Go build başlatılıyor..."
+echo "🚀 Go build başlatılıyor..."
 /usr/local/go/bin/go build -o whatsapp
 check_command "Go build işlemi"
 
