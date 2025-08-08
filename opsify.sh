@@ -201,7 +201,7 @@ After=network.target
 Type=simple
 User=$USER
 WorkingDirectory=$HOME/go-whatsapp-web-multidevice/src
-ExecStart=$HOME/go-whatsapp-web-multidevice/src/whatsapp rest
+ExecStart=$HOME/go-whatsapp-web-multidevice/src/whatsapp rest --webhook=${N8N_DOMAIN}/webhook/opsify --webhook=${N8N_DOMAIN}/webhook-test/opsify
 Restart=always
 RestartSec=10
 Environment=PATH=/usr/local/go/bin:/usr/bin:/bin
